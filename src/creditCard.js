@@ -18,7 +18,7 @@ class CreditCard extends React.Component {
             CCexpiry: '',
             CardNumber: '',
             HolderName: '',
-            CvvNumber: '',
+            CvvNumber: ''
         };
     }
 
