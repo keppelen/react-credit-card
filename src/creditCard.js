@@ -43,9 +43,9 @@ class CreditCard extends React.Component {
 
     changeSelect = (value) => {
         this.setState({ Installments: value });
-        setTimeout(function(){
+        setTimeout( () => {
             this.validateInstallments();
-        }.bind(this), 300);
+        }, 300);
     };
 
     generateInstallmentOptions() {
@@ -53,7 +53,7 @@ class CreditCard extends React.Component {
         for( var i=0; i < this.props.installments; ++i ) {
 
             var installmentsCount = i + 1;
-            var text = installmentsCount + ' vezes de R$ ';
+            var text = `${installmentsCount} vezes de R$ `;
 
             if (installmentsCount == 1) {
                 text = 'à vista por R$ '
@@ -85,7 +85,7 @@ class CreditCard extends React.Component {
                 return null;
             }
 
-            expiry = expiry.slice(0, 2) + "/" + expiry.slice(2, expiryMaxLength);
+            expiry = `${expiry.slice(0, 2)}/${expiry.slice(2, expiryMaxLength)}`;
             return expiry;
         }
     }
@@ -144,7 +144,7 @@ class CreditCard extends React.Component {
 
     validateExpire = () => {
         var month = this.state.CCexpiry.split('/')[0];
-        var year = '20' + this.state.CCexpiry.split('/')[1];
+        var year = `20${this.state.CCexpiry.split('/')[1]}`;
 
         if (creditcard.expiry(month, year)) {
             this.setState({ errorExpire: 'success' });
@@ -231,7 +231,7 @@ class CreditCard extends React.Component {
                 CardNumber: (this.state.CardNumber).replace(/\s+/g, ''),
                 CvvNumber: this.state.CvvNumber,
                 ExpMonth: this.state.CCexpiry.split('/')[0],
-                ExpYear: '20' + this.state.CCexpiry.split('/')[1],
+                ExpYear: `20${this.state.CCexpiry.split('/')[1]}`,
                 Installments: this.state.Installments
             }
 
